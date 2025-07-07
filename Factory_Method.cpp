@@ -46,16 +46,13 @@ public:
 }
 };
 int main(){
-    int x;
-    std::cout<<"what do you want , sea or land transporting (1 for sea 2 for land)";
-    std::cin>>x;
     Logistics* p;
-    if(x==2){
-        p=new CarLogistics;
-    }
-    else{
-        p=new BoatLogistics;
-    }
+    p=new CarLogistics;
+    p->dostuff();
+    delete p;
+    std::cout<<'\n';
+    p=new BoatLogistics;
+    
     p->dostuff();
     delete p;
     return 0;
