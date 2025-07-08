@@ -59,6 +59,8 @@ public:
         return"playing on base console";
     };
     virtual std::string getbrand()const =0;
+    virtual std::string plugcontroller(BaseController& con)const=0;
+    virtual std::string putgame(Cd& cd)const=0;
 };
 class SonyConsole:public BaseConsole{
   public :
@@ -69,7 +71,61 @@ class SonyConsole:public BaseConsole{
   std::string getbrand()const override{
     return "sony";
   } 
+  std::string plugcontroller(BaseController& con)const override{
+    if(!(this->getbrand()==con.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Sony Console with Sony Controller";
+  }
+  std::string putgame(Cd& cd)const override{
+    if(!(this->getbrand()==cd.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Sony Console with Sony Cd";
+  }
+
 };
 class XboxConsole:public BaseConsole{
+    public:
+ ~XboxConsole()=default;
+ std::string play()override{
+return "playing on Xbox Console";
+ }std::string getbrand()const override{
+    return "xbox";
+  } 
+  std::string plugcontroller(BaseController& con)const override{
+    if(!(this->getbrand()==con.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Xbox Console with Xbox Controller";
+  }
+  std::string putgame(Cd& cd)const override{
+    if(!(this->getbrand()==cd.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Xbox Console with Xbox Cd";
+  }
+};
+class NintendoConsole:public BaseConsole{
+~NintendoConsole()=default;
+ std::string play()override{
+return "playing on Nintendo Console";
+ }std::string getbrand()const override{
+    return "Nintendo";
+  } 
+  std::string plugcontroller(BaseController& con)const override{
+    if(!(this->getbrand()==con.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Nintendo Console with Nintendo Controller";
+  }
+  std::string putgame(Cd& cd)const override{
+    if(!(this->getbrand()==cd.getbrand())){
+        return "doesn't work , not same brand";
+    }
+    return "playing on Nintendo Console with Nintendo Cd";
+  }
+};
+class AbstractFactory {
 
 };
