@@ -17,7 +17,7 @@ class Singleton{
     Singleton(const Singleton & other)=delete;
     Singleton& operator =(const Singleton & other)=delete;
     static Singleton *GetInstance (const std::string & s);
-    std::string value(){
+    std::string value()const{
         return val; 
     }
 };
