@@ -87,12 +87,11 @@ void Client (CharacterFactory & factory){
     std::unique_ptr<Character> character;
     if(x==0){
         character=factory.createcharacter(type::Mage);
-        std::cout<<character->info();
     }
     else{
         character=factory.createcharacter(type::Warrior);
-        std::cout<<character->info();
     }
+     std::cout<<character->info();
     //no need for deletion since we use smart pointers
 
 }
