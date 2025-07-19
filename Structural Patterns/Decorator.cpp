@@ -51,9 +51,9 @@ addpeperoni(Foccacia* pizza):BaseDecorator(pizza){}
 int main(){
     Foccacia * pizza=new Pizza();
     Foccacia* topping1=new addcheese(pizza);
-    Foccacia* topping2=new addpeperoni(pizza);
-    std::cout<<topping1->operation();
-    std::cout<<topping1->cost();
+    Foccacia* topping2=new addpeperoni(topping1);
+    std::cout<<topping2->operation();
+    std::cout<<topping2->cost();
     delete pizza ;
     delete topping1;
     delete topping2;
