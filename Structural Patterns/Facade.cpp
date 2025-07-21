@@ -36,6 +36,6 @@ void clientcode(const Facade & f){
     f.givekeys();
 }
 int main(){
-    Facade* f;
-    clientcode(*f);
+    Facade f;
+    clientcode(f);
 }
