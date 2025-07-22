@@ -68,5 +68,6 @@ int main(){
     factory->List();
    const Flyweight & flyweight=factory->getFlyweight({"tree"});
   flyweight.Operation({"Tree1"});
+  delete factory;
 }
 
