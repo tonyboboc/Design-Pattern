@@ -42,6 +42,6 @@ void ClientCode(BasePost & base){
 int main(){
 RealPost r;
 Proxy p(r);
-
+p.loggin();
 ClientCode(p);
 }
