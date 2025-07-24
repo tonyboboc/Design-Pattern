@@ -66,4 +66,7 @@ int main(){
     Handler* h3=new Senior();
     h1->setnext(h2)->setnext(h3);
     clientcode(h1);
+    delete h1;
+    delete h2;
+    delete h3;
 }
