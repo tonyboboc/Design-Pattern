@@ -52,8 +52,10 @@ int main(){
     Foccacia * pizza=new Pizza();
     Foccacia* topping1=new addcheese(pizza);
     Foccacia* topping2=new addpeperoni(topping1);
-    std::cout<<topping2->operation();
-    std::cout<<topping2->cost();
+    std::cout<<topping2->operation()<<' ';
+    std::cout<<topping2->cost()<<std::endl;
+    std::cout<<topping1->operation()<<' ';
+    std::cout<<topping1->cost()<<std::endl;
     delete pizza ;
     delete topping1;
     delete topping2;
