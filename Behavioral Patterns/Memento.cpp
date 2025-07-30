@@ -32,6 +32,9 @@ class Originator{
     void Change(const std::string s){
         this->state=s;
     }
+    std::string print(){
+        return state;
+    }
 };
 class Caretaker{
     std::vector<Memento*> memento;
@@ -39,6 +42,42 @@ class Caretaker{
     public:
     Caretaker(Originator* o):originator(o){}
     ~Caretaker(){
-
+        for (Memento *m:memento ){
+            delete m;
+        }
     }
+    void backup(){
+        memento.push_back(originator->Save());
+    }
+    void undo(){
+        if(memento.size()){
+            Memento* m=memento.back();
+            memento.pop_back();
+            std::cout<<"we are gonna restore Originator to : "<<m->getstate()<<std::endl;
+            originator->Restore(m);
+        }
+        else{std::cout<<"no saves exists\n";}
+    }
+    void print(){
+        for (Memento *m:memento ){
+           std::cout<<m->getstate()<<"\n";
+        }
+    }
+
 };
+void ClientCode(){
+    Originator o("some value");
+    Caretaker c(&o);
+    c.backup();
+    o.Change("other value");
+    c.backup();
+    o.Change("other other value");
+    c.print();
+    c.undo();
+    std::cout<<o.print()<<"decode"<<std::endl;
+    c.print();
+}
+int main(){
+    ClientCode();
+    return 0;
+}
