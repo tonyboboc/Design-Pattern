@@ -47,19 +47,24 @@ class Observer:public BaseObserver{
     static int snumber;
     Subject * subject;
     public:
-    Observer(Subject & sub)subject(sub){
+    Observer(Subject & sub):subject(&sub){
         sub.attach(this);
         std::cout<<"I am Observer : "<<++snumber<<std::endl;
         number=snumber;
     }
     ~Observer(){
-        Std::cout<<"Goodbye , "<<number<<std::endl;
+        std::cout<<"Goodbye , "<<number<<std::endl;
     }
     void Update(const std::string & msg){
         message=msg;
         std::cout<<"Observer "<<number<<" this message is avalible "<<message<<std::endl;
     }
+    void changesubject(Subject &sub){
+        subject=nullptr;
+        subject=&sub;
+    }
     void RemoveFromList(){
-        
+        subject->remove(this);
+        subject=nullptr;
     }
 };
