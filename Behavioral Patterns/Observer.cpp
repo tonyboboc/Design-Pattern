@@ -55,16 +55,38 @@ class Observer:public BaseObserver{
     ~Observer(){
         std::cout<<"Goodbye , "<<number<<std::endl;
     }
-    void Update(const std::string & msg){
+    void Update(const std::string & msg)override{
         message=msg;
         std::cout<<"Observer "<<number<<" this message is avalible "<<message<<std::endl;
     }
     void changesubject(Subject &sub){
-        subject=nullptr;
+        if(subject){
+            subject->remove(this);
+        }
         subject=&sub;
+        sub.attach(this);
+    
     }
     void RemoveFromList(){
+        if(subject){
         subject->remove(this);
         subject=nullptr;
+        }
     }
 };
+void ClientCode(){
+    Subject s1,s2;
+    Observer* o1=new Observer(s1);
+    Observer* o2=new Observer(s1);
+    s1.CreateMessage("A new product is available at store s1");
+    o2->changesubject(s2);
+    s2.CreateMessage("o2 moved 2 store s2");
+    delete o1;
+    delete o2;
+
+}
+int Observer::snumber = 0;
+int main(){
+    ClientCode();
+    return 0;
+}
