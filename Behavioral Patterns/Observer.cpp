@@ -4,7 +4,7 @@
 class BaseObserver{
     public:
 virtual  ~BaseObserver()=default;
-virtual void Update(const std::string & message)=0;
+virtual void Update(const std::string & msg)=0;
 };
 class BaseSubject{
 public:
@@ -38,5 +38,28 @@ class Subject:public BaseSubject{
     void CreateMessage(const std::string &msg){
         message=msg;
         Notify();
+    }
+};
+class Observer:public BaseObserver{
+    private:
+    std::string message;
+    int number;
+    static int snumber;
+    Subject * subject;
+    public:
+    Observer(Subject & sub)subject(sub){
+        sub.attach(this);
+        std::cout<<"I am Observer : "<<++snumber<<std::endl;
+        number=snumber;
+    }
+    ~Observer(){
+        Std::cout<<"Goodbye , "<<number<<std::endl;
+    }
+    void Update(const std::string & msg){
+        message=msg;
+        std::cout<<"Observer "<<number<<" this message is avalible "<<message<<std::endl;
+    }
+    void RemoveFromList(){
+        
     }
 };
