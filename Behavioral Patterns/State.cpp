@@ -17,7 +17,7 @@ class Phone{
 private:
 State* state;
 public:
-Phone (State * st): state(nullptr){
+Phone (State * st){
     Transition_to(st);
 }
 void Transition_to(State* st){
