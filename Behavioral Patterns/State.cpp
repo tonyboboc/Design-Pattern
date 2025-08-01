@@ -40,11 +40,7 @@ void Request2(){
 class Off;
 class On:public State{
 public:
-void powerb()override{
-    //this is power button
-    std::cout<<"Turning Phone off\n";
-    context->Transition_to(new Off);
-}
+void powerb()override;
 void homeb()override{
     std::cout<<"Showing apps\n";
 }
@@ -60,5 +56,20 @@ void homeb()override{
     std::cout<<"Show lockscreen\n";
 }
 };
-
+void On::powerb(){
+    //this is power button
+    std::cout<<"Turning Phone off\n";
+    context->Transition_to(new Off);
+}
+void ClientCode(){
+    Phone* p=new Phone(new On());
+    p->Request2();
+    p->Request1();
+    p->Request2();
+    delete p;
+}
+int main(){
+    ClientCode();
+    return 0;
+}
 
