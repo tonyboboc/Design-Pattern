@@ -32,3 +32,13 @@ class Document2:public Base_Document{
         std::cout<<"different type of save\n";
     }
 };
+void ClientCode(){
+    Document1 d1;
+    Document2 d2;
+    d1.Export_Document();
+    d2.Export_Document();
+}
+int main(){
+    ClientCode();
+    return 0;
+}
