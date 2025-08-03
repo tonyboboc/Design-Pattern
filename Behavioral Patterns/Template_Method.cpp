@@ -9,7 +9,7 @@ class Base_Document{
     }
     protected:
     virtual void save(){
-        std::cout<<"normal type of save";
+        std::cout<<"normal type of save\n";
     }
     void load_document(){
         std::cout<<"showing the document\n";
@@ -21,5 +21,14 @@ class Document1:public Base_Document{
     protected:
     void format_type()const override{
         std::cout<<"format type 1\n";
+    }
+};
+class Document2:public Base_Document{
+    protected:
+    void format_type()const override{
+        std::cout<<"format type 2\n";
+    }
+    void save() override{
+        std::cout<<"different type of save\n";
     }
 };
